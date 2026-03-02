@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'compras.apps.ComprasConfig',
+    'rest_framework',
+    'django_filters',
+    'compras'
+
 ]
 
 MIDDLEWARE = [
