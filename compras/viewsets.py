@@ -17,9 +17,6 @@ from .filters import (
 )
 
 
-# =========================
-# Usuario
-# =========================
 class UsuarioViewSet(ModelViewSet):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
@@ -31,9 +28,6 @@ class UsuarioViewSet(ModelViewSet):
     ordering = ["-created_at"]
 
 
-# =========================
-# Produto
-# =========================
 class ProdutoViewSet(ModelViewSet):
     queryset = Produto.objects.all()
     serializer_class = ProdutoSerializer
@@ -45,9 +39,6 @@ class ProdutoViewSet(ModelViewSet):
     ordering = ["name"]
 
 
-# =========================
-# ListaCompra
-# =========================
 class ListaCompraViewSet(ModelViewSet):
     queryset = ListaCompra.objects.all()
     serializer_class = ListaCompraSerializer
@@ -59,9 +50,6 @@ class ListaCompraViewSet(ModelViewSet):
     ordering = ["-created_at"]
 
 
-# =========================
-# Item
-# =========================
 class ItemViewSet(ModelViewSet):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer

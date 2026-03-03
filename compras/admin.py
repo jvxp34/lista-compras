@@ -2,9 +2,6 @@ from django.contrib import admin
 from .models import Usuario, Produto, ListaCompra, Item
 
 
-# =========================
-# Usuario Admin
-# =========================
 @admin.register(Usuario)
 class UsuarioAdmin(admin.ModelAdmin):
     list_display = ("id", "name", "email", "is_active", "created_at")
@@ -13,9 +10,6 @@ class UsuarioAdmin(admin.ModelAdmin):
     ordering = ("-created_at",)
 
 
-# =========================
-# Produto Admin
-# =========================
 @admin.register(Produto)
 class ProdutoAdmin(admin.ModelAdmin):
     list_display = ("id", "name", "is_active", "created_at")
@@ -24,17 +18,11 @@ class ProdutoAdmin(admin.ModelAdmin):
     ordering = ("name",)
 
 
-# =========================
-# Item Inline (aparece dentro da Lista)
-# =========================
 class ItemInline(admin.TabularInline):
     model = Item
     extra = 1
 
 
-# =========================
-# ListaCompra Admin
-# =========================
 @admin.register(ListaCompra)
 class ListaCompraAdmin(admin.ModelAdmin):
     list_display = ("id", "name", "usuario", "total", "created_at")
@@ -45,9 +33,6 @@ class ListaCompraAdmin(admin.ModelAdmin):
     readonly_fields = ("total",)  # impede editar manualmente
 
 
-# =========================
-# Item Admin
-# =========================
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
     list_display = (

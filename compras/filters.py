@@ -2,11 +2,7 @@ import django_filters
 from .models import Usuario, Produto, ListaCompra, Item
 
 
-# =========================
-# Usuario Filter
-# =========================
 class UsuarioFilter(django_filters.FilterSet):
-
     created_after = django_filters.DateFilter(
         field_name="created_at",
         lookup_expr="gte"
@@ -22,11 +18,7 @@ class UsuarioFilter(django_filters.FilterSet):
         fields = ["is_active"]
 
 
-# =========================
-# Produto Filter
-# =========================
 class ProdutoFilter(django_filters.FilterSet):
-
     created_after = django_filters.DateFilter(
         field_name="created_at",
         lookup_expr="gte"
@@ -42,11 +34,7 @@ class ProdutoFilter(django_filters.FilterSet):
         fields = ["is_active"]
 
 
-# =========================
-# ListaCompra Filter
-# =========================
 class ListaCompraFilter(django_filters.FilterSet):
-
     total_min = django_filters.NumberFilter(
         field_name="total",
         lookup_expr="gte"
@@ -62,11 +50,7 @@ class ListaCompraFilter(django_filters.FilterSet):
         fields = ["usuario"]
 
 
-# =========================
-# Item Filter
-# =========================
 class ItemFilter(django_filters.FilterSet):
-
     valor_min = django_filters.NumberFilter(
         field_name="valor",
         lookup_expr="gte"
