@@ -1,61 +1,42 @@
-from rest_framework.viewsets import ModelViewSet
-from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework import viewsets
 
-from .models import Usuario, Produto, ListaCompra, Item
+from .models import (
+    Usuario,
+    Categoria,
+    Produto,
+    ListaCompra,
+    Item
+)
+
 from .serializers import (
     UsuarioSerializer,
+    CategoriaSerializer,
     ProdutoSerializer,
     ListaCompraSerializer,
     ItemSerializer
 )
-from .filters import (
-    UsuarioFilter,
-    ProdutoFilter,
-    ListaCompraFilter,
-    ItemFilter
-)
 
 
-class UsuarioViewSet(ModelViewSet):
+class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
 
-    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_class = UsuarioFilter
-    search_fields = ["name", "email"]
-    ordering_fields = ["created_at"]
-    ordering = ["-created_at"]
+
+class CategoriaViewSet(viewsets.ModelViewSet):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer
 
 
-class ProdutoViewSet(ModelViewSet):
+class ProdutoViewSet(viewsets.ModelViewSet):
     queryset = Produto.objects.all()
     serializer_class = ProdutoSerializer
 
-    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_class = ProdutoFilter
-    search_fields = ["name"]
-    ordering_fields = ["created_at", "name"]
-    ordering = ["name"]
 
-
-class ListaCompraViewSet(ModelViewSet):
+class ListaCompraViewSet(viewsets.ModelViewSet):
     queryset = ListaCompra.objects.all()
     serializer_class = ListaCompraSerializer
 
-    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_class = ListaCompraFilter
-    search_fields = ["name"]
-    ordering_fields = ["created_at", "total"]
-    ordering = ["-created_at"]
 
-
-class ItemViewSet(ModelViewSet):
+class ItemViewSet(viewsets.ModelViewSet):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
-
-    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_class = ItemFilter
-    search_fields = ["produto__name"]
-    ordering_fields = ["valor", "quantidade", "created_at"]
-    ordering = ["-created_at"]
