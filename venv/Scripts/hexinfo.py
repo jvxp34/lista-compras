@@ -1,4 +1,4 @@
-#!C:\Users\etech\OneDrive\ihm\Desktop\projeto\projetoone\venv\Scripts\python.exe
+#!C:\Users\User\Desktop\CoreList\lista-compras\venv\Scripts\python.exe
 
 # Copyright (c) 2015 Andrew Fernandes <andrew@fernandes.org>
 # All rights reserved.
