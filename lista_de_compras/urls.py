@@ -17,7 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from compras.views import LoginView  # 👈 importa sua view
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # 🔐 LOGIN LIMPO
+    path('api/login/', LoginView.as_view(), name='login'),
+
+    # 📦 ROTAS DO SISTEMA
     path('api/compras/', include('compras.urls')),
 ]
