@@ -33,14 +33,13 @@ class ProdutoSerializer(serializers.ModelSerializer):
 
 
 class ItemSerializer(serializers.ModelSerializer):
-    produto_nome = serializers.CharField(
-        source='produto.nome',
-        read_only=True
-    )
+    produto_nome = serializers.CharField(source='produto.nome', read_only=True)
+    categoria_nome = serializers.CharField(source='produto.categoria.nome', read_only=True)
 
     class Meta:
         model = Item
         fields = '__all__'
+
 
 
 class ListaCompraSerializer(serializers.ModelSerializer):
