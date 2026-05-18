@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # 🔐 LOGIN LIMPO
-    path('api/login/', LoginView.as_view(), name='login'),
+    path('api/login/', LoginView.as_view()),
 
     # 📦 ROTAS DO SISTEMA
     path('api/compras/', include('compras.urls')),

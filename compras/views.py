@@ -47,6 +47,8 @@ class ItemViewSet(viewsets.ModelViewSet):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
 
+
+# 🔐 LOGIN POR EMAIL
 class LoginView(APIView):
 
     def post(self, request):

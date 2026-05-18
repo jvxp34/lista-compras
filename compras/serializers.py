@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from .models import (
     Usuario,
@@ -51,20 +52,23 @@ class ListaCompraSerializer(serializers.ModelSerializer):
 
 
 class LoginSerializer(serializers.Serializer):
-    username = serializers.CharField()
-    password = serializers.CharField(write_only=True)
+    email = serializers.EmailField()
+    password = serializers.CharField()
 
     def validate(self, data):
-        user = authenticate(
-            username=data['username'],
-            password=data['password']
-        )
+        email = data.get('email')
+        password = data.get('password')
+
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            raise serializers.ValidationError("Usuário ou senha inválidos")
+
+        user = authenticate(username=user.username, password=password)
 
         if not user:
             raise serializers.ValidationError("Usuário ou senha inválidos")
 
-        if not user.is_active:
-            raise serializers.ValidationError("Usuário inativo")
-
-        data['user'] = user
-        return data
+        return {
+            'user': user
+        }
